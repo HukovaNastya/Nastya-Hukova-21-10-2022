@@ -13,10 +13,10 @@ import {
 import axios from 'axios';
 import {  message } from 'antd';
 
-export const getSearchedWeather = (query) => (dispatch) => {
+export const getSearchedWeather = (city) => (dispatch) => {
   dispatch({ type: SearchedWeather_REQUEST_IN_PROGRESS });
   axios
-    .get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?${query}`)
+    .get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete??apikey=${process.env.REACT_APP_WEATHER_API}&q=${city}`)
     .then((res) => {
        dispatch({
          type: SearchedWeather_REQUEST_IN_SUCCESS,
