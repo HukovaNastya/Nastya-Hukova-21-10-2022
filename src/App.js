@@ -1,12 +1,15 @@
 import React from 'react';
-import PublicRouter from './routes/PublickRoutes';
+import ReactDOM from 'react-dom';
+import App from './App';
+import store from './store/store';
+import {Provider} from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <PublicRouter/>
-    </div>
-  );
-}
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-export default App;
