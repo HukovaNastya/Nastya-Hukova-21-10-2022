@@ -27,8 +27,8 @@ const Header = ( ) => {
       <PageHeader
         className="header"
         extra={[
-          <Space  align="center" size={830}>
-            <Title className="header-title">Herolo weather task</Title>
+          <Space  align="center" size={850}>
+            <Title className="header-title" style={{ color: '#5467b8'}}>Herolo weather task</Title>
               <Space size={10}>
                 <Button type="dashed" size="large" onClick={homeClickHandler} style={{backgroundColor: home == true  ? "green": ""}}>
                   Home
@@ -45,3 +45,4 @@ const Header = ( ) => {
 }
 
 export default Header;
+
