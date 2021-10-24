@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Image, Button, Space , Row } from 'antd';
+import { Card, Image, Space , Row } from 'antd';
 import './CardsForForecas.css';
 import weatherToday from '../../img/weatherToday.svg';
+
 
 const CardsForForecas = ( ) => {
   return (

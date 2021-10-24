@@ -1,11 +1,18 @@
 import React from 'react';
 import Header from '../../components/header/Header';
+import WeatherCardFavorite from '../../components/weatherCardFavorite/WeatherCardFavorite';
+import { Row } from 'antd';
 
 const Favorite = ( ) => {
   return (
     <div className="container">
       <Header></Header>
-      <h1>Favorite</h1>
+      <div className="weather-card-wrap">
+        <Row  gutter={12}>
+          <WeatherCardFavorite></WeatherCardFavorite>
+          <WeatherCardFavorite></WeatherCardFavorite>
+        </Row>
+      </div>
     </div>
   );
 }
