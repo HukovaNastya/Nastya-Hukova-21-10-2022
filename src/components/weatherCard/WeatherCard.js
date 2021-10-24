@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image, Space  } from 'antd';
 import './WeatherCard.css';
-import weatherToday from '../../img/weatherToday.png';
+import weatherToday from '../../img/weatherToday.svg';
 
 const WeatherCard = ( ) => {
   return (
@@ -11,6 +11,7 @@ const WeatherCard = ( ) => {
           <Image
             width={100}
             src={weatherToday}
+            preview={false}
            />
           <div className="weather-data">
             <p className="weather-data-city"><span>City:</span> Санкт-Петербург</p>
