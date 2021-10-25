@@ -1,17 +1,15 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../pages/home/Home';
 import Favorite from '../pages/favorite/Favorite';
 
-const PublicRouter = () => {
+const PublicRouter = ({ children }) => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/favorite" component={Favorite} />
-        <Redirect from="/" to="/home" />
-      </Switch>
-    </Router>
-  )
-}
+    <Switch>
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/favorite" component={Favorite} />
+      <Redirect from="/" to="/home" />
+    </Switch>
+  );
+};
 
 export default PublicRouter;

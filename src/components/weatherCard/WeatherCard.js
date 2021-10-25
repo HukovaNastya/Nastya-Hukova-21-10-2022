@@ -4,9 +4,8 @@ import weatherToday from '../../img/weatherToday.svg';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
-const WeatherCardContainer = styled.div `
+const WeatherCardContainer = styled.div`
   max-width: 1200px;
-  font-family: 'Montserrat', sans-serif;
   & p {
     font-weight: 500;
     font-size: 16px;
@@ -19,15 +18,14 @@ const WeatherCardContainer = styled.div `
   }
 `;
 
-const StyledWeatherCard = styled(Card) `
+const StyledWeatherCard = styled(Card)`
   width: 450px;
   border-radius: 10%;
-  margin: 80px 0 0 300px ;
   background: transparent !important;
-  box-shadow: -6px -6px 20px rgba(255, 255, 255,1),
-              -6px -6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), -6px -6px 20px rgba(0, 0, 0, 0.1);
   padding: 40px;
 `;
+
 
 const WeatherCard = ( ) => {
   return (

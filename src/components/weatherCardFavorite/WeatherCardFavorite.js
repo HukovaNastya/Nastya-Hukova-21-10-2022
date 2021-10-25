@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 const ContainerForWeatherCard = styled.div `
   max-width: 1200px;
   font-family: 'Montserrat', sans-serif;
+  margin: 80px 0 0 150px ;
   & p {
     font-weight: 500;
     font-size: 16px;
@@ -22,7 +23,6 @@ const ContainerForWeatherCard = styled.div `
 const StyledCard = styled(Card) `
   width: 450px;
   border-radius: 10%;
-  margin: 80px 0 0 150px ;
   background: transparent !important;
   box-shadow: -6px -6px 20px rgba(255, 255, 255,1),
               -6px -6px 20px rgba(0, 0, 0, 0.1);

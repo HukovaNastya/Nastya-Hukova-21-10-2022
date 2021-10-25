@@ -12,11 +12,12 @@ import {
 
 import axios from 'axios';
 import {  message } from 'antd';
+import api from '../../plugins/axios/index';
 
-export const getSearchedWeather = (city) => (dispatch) => {
+export const getSearchedWeather = (search) => (dispatch) => {
   dispatch({ type: SearchedWeather_REQUEST_IN_PROGRESS });
-  axios
-    .get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete??apikey=${process.env.REACT_APP_WEATHER_API}&q=${city}`)
+  api
+    .get(`locations/v1/cities/autocomplete?q=${search}`)
     .then((res) => {
        dispatch({
          type: SearchedWeather_REQUEST_IN_SUCCESS,
@@ -33,10 +34,11 @@ export const getSearchedWeather = (city) => (dispatch) => {
 }
 
 
-export const getCurrentForecast = (locationKey, query) => (dispatch) => {
+
+export const getCurrentForecast = (locationKey) => (dispatch) => {
   dispatch({ type: CurrentForecast_REQUEST_IN_PROGRESS });
-  axios
-    .get(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?${query}`)
+  api
+    .get(`currentconditions/v1/${locationKey}`)
     .then((res) => {
        dispatch({
          type: CurrentForecast_REQUEST_IN_SUCCESS,
@@ -52,10 +54,10 @@ export const getCurrentForecast = (locationKey, query) => (dispatch) => {
     })
 }
 
-export const getFiveDaysForecast = (locationKey, query) => (dispatch) => {
+export const getFiveDaysForecast = (locationKey) => (dispatch) => {
   dispatch({ type: FiveDaysForecast_REQUEST_IN_PROGRESS });
-  axios
-    .get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?${query}`)
+  api
+    .get(`forecasts/v1/daily/5day/${locationKey}`)
     .then((res) => {
        dispatch({
          type: FiveDaysForecast_REQUEST_IN_SUCCESS,

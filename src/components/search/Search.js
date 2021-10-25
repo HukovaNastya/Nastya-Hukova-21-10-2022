@@ -12,7 +12,7 @@ const Search = () => {
         enterButton="Search"
         size="large"
         onSearch={onSearch}
-        style={{ width: 800, margin: '60px 0px 0px 280px'}}
+        style={{ width: 800, margin: '60px 0px 0px 200px'}}
       />
     </div>
   )

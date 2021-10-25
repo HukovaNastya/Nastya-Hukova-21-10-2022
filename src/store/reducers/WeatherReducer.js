@@ -11,7 +11,7 @@ import {
 } from '../types';
 
 const initState = {
-  weather: [],
+  searchedForecast: [],
   currentForecast: [],
   fiveDaysForecast: [],
   loading: false,
@@ -30,7 +30,7 @@ const weatherReducer = (state = initState, action) => {
     case SearchedWeather_REQUEST_IN_SUCCESS:
       return {
         ...state,
-        weather: action.payload,
+        searchedForecast: action.payload,
       };
     case SearchedWeather_REQUEST_IN_ERROR:
       return {

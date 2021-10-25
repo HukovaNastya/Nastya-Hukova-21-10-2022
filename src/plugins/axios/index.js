@@ -1,7 +1,11 @@
 import axios from 'axios';
-import interceptors from './interceptors';
 
-const api = axios.create({ baseURL: `http://dataservice.accuweather.com/alarms/v1/1day/` });
-interceptors(api);
+const api  = axios.create({
+  baseURL: `http://dataservice.accuweather.com/`,
+  params: {
+    api_key: `${process.env.REACT_APP_WEATHER_API}`,
+    language: 'en-us'
+  }
+});
 
 export default api;

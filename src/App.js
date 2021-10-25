@@ -1,10 +1,13 @@
-import React, { useEffect, useState} from 'react';
+import React from 'react';
 import PublickRoutes from './routes/PublickRoutes';
+import LayoutContent from './components/layout/LayoutContent';
 
 function App() {
   return (
     <div>
-      <PublickRoutes/>
+     <LayoutContent>
+      <PublickRoutes />
+    </LayoutContent>
     </div>
   )
 }

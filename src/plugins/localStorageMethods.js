@@ -1,0 +1,9 @@
+export const localStorageMethods = {
+  getItem: key => {
+    return JSON.parse(localStorage.getItem(key));
+  },
+
+  setItem: (key, value) => {
+    localStorage.setItem(key, value);
+  }
+};

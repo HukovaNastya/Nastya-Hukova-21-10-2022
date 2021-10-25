@@ -1,20 +1,23 @@
 import React from 'react';
-import Header from '../../components/header/Header';
-import WeatherCardFavorite from '../../components/weatherCardFavorite/WeatherCardFavorite';
+import styled from 'styled-components';
+import WeatherCard from '../../components/weatherCard/WeatherCard';
 import { Row } from 'antd';
 
-const Favorite = ( ) => {
+const WeatherCardWrapper = styled.div`
+  margin: 80px px 0px 0px;
+
+`;
+
+
+const Favorite = () => {
   return (
-    <div className="container">
-      <Header></Header>
-      <div className="weather-card-wrap">
-        <Row  gutter={12}>
-          <WeatherCardFavorite></WeatherCardFavorite>
-          <WeatherCardFavorite></WeatherCardFavorite>
-        </Row>
-      </div>
-    </div>
+    <WeatherCardWrapper>
+      <Row gutter={24}>
+        <WeatherCard ></WeatherCard>
+        <WeatherCard></WeatherCard>
+      </Row>
+    </WeatherCardWrapper>
   );
-}
+};
 
 export default Favorite;
