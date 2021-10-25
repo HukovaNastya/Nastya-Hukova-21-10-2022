@@ -7,7 +7,8 @@ import {
   CurrentForecast_REQUEST_IN_ERROR,
   FiveDaysForecast_REQUEST_IN_PROGRESS,
   FiveDaysForecast_REQUEST_IN_SUCCESS,
-  FiveDaysForecast_REQUEST_IN_ERROR
+  FiveDaysForecast_REQUEST_IN_ERROR,
+  SearchedWeatherCity_REQUEST_IN_SUCCESS
 } from '../types';
 
 import {  message } from 'antd';
@@ -18,9 +19,18 @@ export const getSearchedWeather = (search) => (dispatch) => {
   api
     .get(`locations/v1/cities/autocomplete?q=${search}`)
     .then((res) => {
+      dispatch({
+        type: SearchedWeatherCity_REQUEST_IN_SUCCESS,
+        payload: res.data[0].LocalizedName
+      });
+       return api
+                .get(`forecasts/v1/daily/5day/${res.data[0].Key}?metric=true})`)
+
+     })
+    .then((res) => {
        dispatch({
          type: SearchedWeather_REQUEST_IN_SUCCESS,
-         payload: res.data
+         payload: res.data.DailyForecasts
        });
        message.success('Request success!');
     })
@@ -32,26 +42,6 @@ export const getSearchedWeather = (search) => (dispatch) => {
     })
 }
 
-
-
-export const getCurrentForecast = (locationKey) => (dispatch) => {
-  dispatch({ type: CurrentForecast_REQUEST_IN_PROGRESS });
-  api
-    .get(`currentconditions/v1/${locationKey}`)
-    .then((res) => {
-       dispatch({
-         type: CurrentForecast_REQUEST_IN_SUCCESS,
-         payload: res.data
-       });
-       message.success('Request success!');
-    })
-    .catch((err) => {
-      dispatch({
-        type: CurrentForecast_REQUEST_IN_ERROR
-      });
-      message.error('Request failed!');
-    })
-}
 
 export const getFiveDaysForecast = (locationKey) => (dispatch) => {
   dispatch({ type: FiveDaysForecast_REQUEST_IN_PROGRESS });

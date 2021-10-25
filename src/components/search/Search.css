@@ -1,0 +1,22 @@
+@media (max-width: 1051px) {
+  .weather-search {
+    width: 600px !important;
+    margin: 60px 0px 0px 100px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .weather-search {
+    width: 400px !important;
+    margin: 60px 0px 0px 50px !important;
+  }
+
+}
+
+@media (max-width: 390px) {
+  .weather-search {
+    width: 100px !important;
+    margin: 180px 0px 0px 20px !important;
+  }
+
+}

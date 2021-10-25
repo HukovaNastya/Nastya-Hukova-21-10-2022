@@ -2,6 +2,7 @@ import React from 'react';
 import { Input} from 'antd';
 import {getSearchedWeather} from '../../store/actions/WeatherActions';
 import { useDispatch } from "react-redux";
+import './Search.css';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const Search = () => {
   return(
     <div>
       <Search
+        className="weather-search"
         placeholder="input search city weather"
         allowClear
         enterButton="Search"

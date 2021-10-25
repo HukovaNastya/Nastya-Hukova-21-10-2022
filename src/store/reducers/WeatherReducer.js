@@ -7,13 +7,15 @@ import {
   CurrentForecast_REQUEST_IN_ERROR,
   FiveDaysForecast_REQUEST_IN_PROGRESS,
   FiveDaysForecast_REQUEST_IN_SUCCESS,
-  FiveDaysForecast_REQUEST_IN_ERROR
+  FiveDaysForecast_REQUEST_IN_ERROR,
+  SearchedWeatherCity_REQUEST_IN_SUCCESS
 } from '../types';
 
 const initState = {
   searchedForecast: [],
   currentForecast: [],
   fiveDaysForecast: [],
+  city: '',
   loading: false,
   isgetWeatherInProgress: false,
   isgetCurrentForecastInProgress: false,
@@ -37,6 +39,11 @@ const weatherReducer = (state = initState, action) => {
         ...state,
         isgetWeatherInProgres: false
       };
+      case SearchedWeatherCity_REQUEST_IN_SUCCESS:
+        return {
+          ...state,
+          city: action.payload
+        }
     case CurrentForecast_REQUEST_IN_PROGRESS:
       return {
         ...state,
