@@ -3,20 +3,16 @@ import styled from 'styled-components';
 import WeatherCard from '../../components/weatherCard/WeatherCard';
 import { Row } from 'antd';
 
-const WeatherCardWrapper = styled.div`
-  margin: 80px px 0px 0px;
-
-`;
 
 
 const Favorite = () => {
   return (
-    <WeatherCardWrapper>
-      <Row gutter={24}>
-        <WeatherCard ></WeatherCard>
-        <WeatherCard></WeatherCard>
+    <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
+      <Row justify="center" gutter={12} >
+        <WeatherCard/>
+        <WeatherCard/>
       </Row>
-    </WeatherCardWrapper>
+    </div>
   );
 };
 

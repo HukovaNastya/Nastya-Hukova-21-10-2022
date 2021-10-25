@@ -6,6 +6,8 @@ import 'antd/dist/antd.css';
 
 const WeatherCardContainer = styled.div`
   max-width: 1200px;
+  margin-top: 80px;
+  margin-left: 30px;
   & p {
     font-weight: 500;
     font-size: 16px;

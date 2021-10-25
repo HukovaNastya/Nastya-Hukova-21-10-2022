@@ -22,8 +22,8 @@ const Home = () => {
     <Wrapper>
       <Search />
       <div>
-        <Space size={140}>
-          <div style={{margin: '80px 0px 0px 190px'}}>
+        <Space size={144}>
+          <div style={{margin: '80px 0px 0px 160px'}}>
           <WeatherCard></WeatherCard>
           </div>
           <Space size={25}>
