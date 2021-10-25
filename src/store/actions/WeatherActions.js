@@ -10,7 +10,6 @@ import {
   FiveDaysForecast_REQUEST_IN_ERROR
 } from '../types';
 
-import axios from 'axios';
 import {  message } from 'antd';
 import api from '../../plugins/axios/index';
 

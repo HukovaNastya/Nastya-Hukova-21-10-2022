@@ -17,13 +17,14 @@ const Wrapper = styled.div`
   gap: 30px;
 `;
 
+
 const Home = () => {
   return (
     <Wrapper>
       <Search />
       <div>
         <Space size={144}>
-          <div style={{margin: '80px 0px 0px 160px'}}>
+          <div style={{margin: '80px 0px 0px 172px'}}>
           <WeatherCard></WeatherCard>
           </div>
           <Space size={25}>

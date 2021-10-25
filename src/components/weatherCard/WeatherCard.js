@@ -26,8 +26,11 @@ const StyledWeatherCard = styled(Card)`
   background: transparent !important;
   box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), -6px -6px 20px rgba(0, 0, 0, 0.1);
   padding: 40px;
-`;
 
+  @media (min-width: 1040px) {
+
+  }
+`;
 
 const WeatherCard = ( ) => {
   return (

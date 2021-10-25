@@ -39,7 +39,7 @@ const WeatherCardFavorite = ( ) => {
             src={weatherToday}
             preview={false}
           />
-          <div >
+          <div>
             <p className="weather-data-city-favorite"><span>City:</span> Санкт-Петербург</p>
             <p className="weather-data-temp-favorite"><span>Temperature:</span> 38F</p>
           </div>

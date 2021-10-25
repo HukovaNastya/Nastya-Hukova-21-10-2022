@@ -47,12 +47,10 @@ const AppHeader = () => {
   return (
     <StyledHeader>
       <StyledTitle style={{ color: '#5467b8' }}>Herolo weather task</StyledTitle>
-
       <Space size={10}>
         <StyledButton size="large" onClick={redirectToHomePage} bgColor={activeLink === NAV_LINKS.home}>
           Home
         </StyledButton>
-
         <StyledButton size="large" onClick={redirectToFavouritesPage} bgColor={activeLink === NAV_LINKS.favourites}>
           Favorites
         </StyledButton>

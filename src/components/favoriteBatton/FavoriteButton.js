@@ -1,10 +1,16 @@
 import React from 'react';
 import {  Button } from 'antd';
+import styled from 'styled-components';
+
+const AddFavoriteButton = styled (Button)`
+
+
+`;
 
 const FavoriteButton = ( ) => {
   return (
     <div className="container">
-      <Button type="dashed" size="large">Add to Favorites</Button>
+      <AddFavoriteButton  type="dashed" size="large">Add to Favorites</AddFavoriteButton >
     </div>
   );
 }
