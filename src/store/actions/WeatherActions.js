@@ -12,7 +12,7 @@ import {
 } from '../types';
 
 import {  message } from 'antd';
-import api from '../../plugins/axios/index';
+import api from '../../plugins/axios/axios';
 
 export const getSearchedWeather = (search) => (dispatch) => {
   dispatch({ type: SearchedWeather_REQUEST_IN_PROGRESS });

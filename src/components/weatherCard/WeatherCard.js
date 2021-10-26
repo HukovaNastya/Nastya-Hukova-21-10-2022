@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Image, Space  } from 'antd';
-import weatherToday from '../../img/weatherToday.svg';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import {useSelector} from 'react-redux';
+import {iconUrl} from '../../services/index';
 
 const WeatherCardContainer = styled.div`
   max-width: 1200px;
@@ -34,7 +34,7 @@ const StyledWeatherCard = styled(Card)`
 `;
 
 const WeatherCard = ( ) => {
-  const {searchedForecast, city} = useSelector(state => state.weather)
+  const {searchedForecast, city} = useSelector(state => state.weather);
 
   return (
     <WeatherCardContainer>
@@ -42,12 +42,12 @@ const WeatherCard = ( ) => {
         <Space size={32}>
           <Image
             width={100}
-            src={weatherToday}
+            src={iconUrl(searchedForecast[0]?.Day.Icon)}
             preview={false}
-           />
+          />
           <div>
-            <p ><span>City: {city}</span></p>
-            <p ><span>Temperature:</span>{searchedForecast[0]?.Temperature.Maximum.Value}{searchedForecast[0]?.Temperature.Maximum.Unit}</p>
+            <p ><span>City:</span> {city}</p>
+            <p ><span>Temperature: </span> {searchedForecast[0]?.Temperature.Maximum.Value}{searchedForecast[0]?.Temperature.Maximum.Unit}</p>
           </div>
         </Space>
       </StyledWeatherCard >

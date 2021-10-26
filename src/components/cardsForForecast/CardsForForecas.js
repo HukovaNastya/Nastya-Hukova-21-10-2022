@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image, Space , Row } from 'antd';
 import weatherToday from '../../img/weatherToday.svg';
 import styled from 'styled-components';
+import {useSelector} from 'react-redux';
 
 const ContainerForecast = styled.div`
   max-width: 1200px;
@@ -34,6 +35,8 @@ const CardBodyForecast = styled(Card)`
 `;
 
 const CardsForForecas = ( ) => {
+  const {searchedForecast, city} = useSelector(state => state.weather);
+
   return (
     <ContainerForecast>
       <Row justify="center" gutter={12}>
