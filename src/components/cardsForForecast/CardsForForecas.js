@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image, Space , Row } from 'antd';
 import weatherToday from '../../img/weatherToday.svg';
 import styled from 'styled-components';
-import {useSelector} from 'react-redux';
+import {iconUrl} from '../../services/index';
 
 const ContainerForecast = styled.div`
   max-width: 1200px;
@@ -13,7 +13,7 @@ const CardBodyForecast = styled(Card)`
   width: 160px;
   height: 200px;
   border-radius: 10%;
-  margin: 40px 0 0 20px ;
+  margin: 40px 0 0 0px ;
   background: transparent !important;
   box-shadow: -6px -6px 20px rgba(255, 255, 255,1),
               -6px -6px 20px rgba(0, 0, 0, 0.1);
@@ -34,13 +34,26 @@ const CardBodyForecast = styled(Card)`
 
 `;
 
-const CardsForForecas = ( ) => {
-  const {searchedForecast, city} = useSelector(state => state.weather);
+const CardsForForecas = ( props) => {
+  const date = new Date(props.searchedForecas.Date).toLocaleDateString()
 
   return (
     <ContainerForecast>
-      <Row justify="center" gutter={12}>
+
       <CardBodyForecast>
+          <p className="weather-data-day">{date}</p>
+          <Space size={35}>
+            <Image
+              width={40}
+              src={iconUrl(props.searchedForecas.Day.Icon)}
+              preview={false}
+            />
+            <div className="weather-data-forecast">
+              <h5 className="weather-data-forecast-temp"> {props.searchedForecas?.Temperature.Maximum.Value}{props.searchedForecas?.Temperature.Maximum.Unit}</h5>
+            </div>
+          </Space>
+        </CardBodyForecast>
+        {/* <CardBodyForecast>
           <p className="weather-data-day">Mn</p>
           <Space size={35}>
             <Image
@@ -91,21 +104,8 @@ const CardsForForecas = ( ) => {
               <h5 className="weather-data-forecast-temp"> 38F</h5>
             </div>
           </Space>
-        </CardBodyForecast>
-        <CardBodyForecast>
-          <p className="weather-data-day">Mn</p>
-          <Space size={35}>
-            <Image
-              width={40}
-              src={weatherToday}
-              preview={false}
-            />
-            <div className="weather-data-forecast">
-              <h5 className="weather-data-forecast-temp"> 38F</h5>
-            </div>
-          </Space>
-        </CardBodyForecast>
-      </Row>
+        </CardBodyForecast> */}
+
     </ContainerForecast>
   );
 }

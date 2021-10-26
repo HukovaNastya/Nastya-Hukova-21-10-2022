@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import ForecastTitle from '../../components/forecastTitle/ForecastTitle';
 import { Row, Col } from 'antd';
-import CardsForForecas from '../../components/cardsForForecast/CardsForForecas';
+import ForecastList from '../../components/ForecastList/ForecastList';
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const Home = () => {
        < ForecastTitle/>
       </div>
       <div>
-        <CardsForForecas></CardsForForecas>
+        <ForecastList></ForecastList>
       </div>
     </Wrapper>
   );
