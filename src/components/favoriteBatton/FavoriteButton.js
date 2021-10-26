@@ -3,8 +3,21 @@ import {  Button } from 'antd';
 import styled from 'styled-components';
 
 const AddFavoriteButton = styled (Button)`
+  margin-top: 90px;
+  margin-left: 190px;
+  @media (max-width: 1000px) {
+    margin-top: 90px;
+    margin-left: 190px;
+  }
 
-
+  @media (max-width: 780px) {
+    margin-top: 90px;
+    margin-left: 150px;
+  }
+  @media (max-width: 505px) {
+    margin-top: 90px;
+    margin-left: 20px;
+  }
 `;
 
 const FavoriteButton = ( ) => {

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Input} from 'antd';
 import {getSearchedWeather} from '../../store/actions/WeatherActions';
 import { useDispatch } from "react-redux";
 import './Search.css';
 
 const Search = () => {
+  const [text, setText] = useState('')
   const dispatch = useDispatch();
   const { Search } = Input;
   const onSearch = (value) => {
+
     dispatch(getSearchedWeather(value))
+    setText('')
   }
   return(
     <div>

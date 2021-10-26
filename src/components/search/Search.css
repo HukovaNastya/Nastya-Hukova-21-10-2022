@@ -13,10 +13,18 @@
 
 }
 
-@media (max-width: 390px) {
+@media (max-width: 520px) {
   .weather-search {
-    width: 100px !important;
-    margin: 180px 0px 0px 20px !important;
+    width: 340px !important;
+    margin: 150px 0px 0px 10px !important;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .weather-search {
+    width: 300px !important;
+    margin: 150px 0px 0px 20px !important;
   }
 
 }

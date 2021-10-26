@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import {useSelector} from 'react-redux';
 import {iconUrl} from '../../services/index';
+import './WeatherCard.css';
 
 const WeatherCardContainer = styled.div`
   max-width: 1200px;
@@ -19,6 +20,14 @@ const WeatherCardContainer = styled.div`
     font-size: 16px;
     color: #5467b8;
   }
+  @media (max-width: 780px) {
+    max-width: 600px;
+    margin-left: -90px;
+  }
+  @media (max-width: 350px) {
+    max-width: 300px;
+    margin-left: -90px;
+  }
 `;
 
 const StyledWeatherCard = styled(Card)`
@@ -27,9 +36,12 @@ const StyledWeatherCard = styled(Card)`
   background: transparent !important;
   box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), -6px -6px 20px rgba(0, 0, 0, 0.1);
   padding: 40px;
-
-  @media (min-width: 1040px) {
-
+  @media (max-width: 780px) {
+    width: 320px;
+  }
+  @media (max-width: 350px) {
+    width: 200px;
+   margin-left: 30px;
   }
 `;
 
@@ -41,6 +53,7 @@ const WeatherCard = ( ) => {
       <StyledWeatherCard >
         <Space size={32}>
           <Image
+            className="weather-img"
             width={100}
             src={iconUrl(searchedForecast[0]?.Day.Icon)}
             preview={false}

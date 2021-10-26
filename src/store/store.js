@@ -8,6 +8,7 @@ const middleware = [thunk];
 
 const reducers = combineReducers({
   weather: weatherReducer,
+  favourites: favouritesReducer
 });
 
 const composeEnhancers =

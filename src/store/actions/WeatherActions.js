@@ -33,6 +33,8 @@ export const getSearchedWeather = (search) => (dispatch) => {
          payload: res.data.DailyForecasts
        });
        message.success('Request success!');
+       const localKey = res.data[0].Key;
+       localStorage.setItem('localKey', localKey );
     })
     .catch((err) => {
       dispatch({

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-
-// components
 import { Space, Typography, Button } from 'antd';
 import { Layout } from 'antd';
 const { Header } = Layout;
@@ -27,6 +25,21 @@ const StyledTitle = styled(Typography)`
   text-transform: uppercase;
   font-weight: 700;
   font-size: 26px;
+
+  @media (min-width: 350px) {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 20px;
+  }
+
+  @media (min-width: 520px) {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 14px;
+    margin-top: 30px;
+  }
+
 `;
 
 const AppHeader = () => {

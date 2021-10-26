@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Image, Space , Row } from 'antd';
-import weatherToday from '../../img/weatherToday.svg';
 import styled from 'styled-components';
 import {iconUrl} from '../../services/index';
 
@@ -53,59 +52,6 @@ const CardsForForecas = ( props) => {
             </div>
           </Space>
         </CardBodyForecast>
-        {/* <CardBodyForecast>
-          <p className="weather-data-day">Mn</p>
-          <Space size={35}>
-            <Image
-              width={40}
-              src={weatherToday}
-              preview={false}
-            />
-            <div className="weather-data-forecast">
-              <h5 className="weather-data-forecast-temp"> 38F</h5>
-            </div>
-          </Space>
-        </CardBodyForecast>
-        <CardBodyForecast>
-          <p className="weather-data-day">Mn</p>
-          <Space size={35}>
-            <Image
-              width={40}
-              src={weatherToday}
-              preview={false}
-            />
-            <div className="weather-data-forecast">
-              <h5 className="weather-data-forecast-temp"> 38F</h5>
-            </div>
-          </Space>
-        </CardBodyForecast>
-        <CardBodyForecast>
-          <p className="weather-data-day">Mn</p>
-          <Space size={35}>
-            <Image
-              width={40}
-              src={weatherToday}
-              preview={false}
-            />
-            <div className="weather-data-forecast">
-              <h5 className="weather-data-forecast-temp"> 38F</h5>
-            </div>
-          </Space>
-        </CardBodyForecast>
-        <CardBodyForecast>
-          <p className="weather-data-day">Mn</p>
-          <Space size={35}>
-            <Image
-              width={40}
-              src={weatherToday}
-              preview={false}
-            />
-            <div className="weather-data-forecast">
-              <h5 className="weather-data-forecast-temp"> 38F</h5>
-            </div>
-          </Space>
-        </CardBodyForecast> */}
-
     </ContainerForecast>
   );
 }
