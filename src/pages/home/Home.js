@@ -30,7 +30,7 @@ const Home = () => {
     },[]);
 
   const onClick = () => {
-    // dispatch(addLocationToFavourites( 'cities'));
+    // dispatch(addLocationToFavourites('cities'));
     const favorites = localStorageMethods.getItem('cities') || [];
     localStorageMethods.setItem('cities', [...favorites, city]);
   }
