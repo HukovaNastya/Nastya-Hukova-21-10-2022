@@ -11,6 +11,8 @@ import ForecastTitle from '../../components/forecastTitle/ForecastTitle';
 import { Row, Col } from 'antd';
 import ForecastList from '../../components/ForecastList/ForecastList';
 import {getSearchedWeather } from '../../store/actions/WeatherActions';
+import {useSelector} from 'react-redux';
+import {storage} from '../../plugins/Storage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,13 +22,17 @@ const Wrapper = styled.div`
 
 const Home = () => {
   const dispatch = useDispatch();
-  const key = '215854';
-  const city = 'Tel Aviv';
+
+  const {searchedForecast, city} = useSelector(state => state.weather);
 
   useEffect(() => {
-      dispatch(getSearchedWeather('215854', 'Tel Aviv'));
-    }
-  );
+      dispatch(getSearchedWeather('Tel Aviv'));
+    },[]);
+
+  const onClick = () => {
+    const favorites = storage.getItem('cities') || [];
+    storage.setItem('cities', [...favorites, city]);
+  }
 
   return (
     <Wrapper>
@@ -34,11 +40,11 @@ const Home = () => {
       <div>
         <Row justify="space-between" gutter={12} >
           <div style={{margin: '20px 0px 0px 172px'}}>
-            <WeatherCard></WeatherCard>
+            <WeatherCard searchedForecast={searchedForecast} city={city}></WeatherCard>
           </div>
           <Space size={10}>
             {/* <FontAwesomeIcon icon={faHeart} size="3x" style={{ color: '#dea310' }}/> */}
-            <FavoriteButton></FavoriteButton>
+            <FavoriteButton onClick={onClick}></FavoriteButton>
           </Space>
         </Row>
       </div>

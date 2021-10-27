@@ -8,16 +8,16 @@ import {
 
 import {getSearchedWeather} from '../actions/WeatherActions';
 
-export const getFavouriteLocations = (locationKey) => async dispatch => {
+export const getFavouriteLocations = () => async dispatch => {
   dispatch({ type: GetFavorite_City_IN_PROGRESS });
 
   try {
-    const favouritesId = storage.getItem(locationKey) || [];
+    const cities = storage.getItem('cities') || [];
     const favouritesForecast = [];
 
-    for (let location of favouritesId) {
+    for (let location of cities) {
       const response = await getSearchedWeather(location);
-      favouritesForecast.push(response.data);
+      favouritesForecast.push({...response.data, city: location});
     }
 
     dispatch({

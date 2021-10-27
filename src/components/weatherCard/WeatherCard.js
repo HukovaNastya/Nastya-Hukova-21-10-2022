@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image, Space  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import {useSelector} from 'react-redux';
+
 import {iconUrl} from '../../services/index';
 import './WeatherCard.css';
 
@@ -45,9 +45,8 @@ const StyledWeatherCard = styled(Card)`
   }
 `;
 
-const WeatherCard = ( ) => {
-  const {searchedForecast, city} = useSelector(state => state.weather);
 
+const WeatherCard = ({searchedForecast, city}) => {
   return (
     <WeatherCardContainer>
       <StyledWeatherCard >
@@ -55,7 +54,7 @@ const WeatherCard = ( ) => {
           <Image
             className="weather-img"
             width={100}
-            src={iconUrl(searchedForecast[0]?.Day.Icon)}
+            src={iconUrl(searchedForecast?.[0]?.Day.Icon)}
             preview={false}
           />
           <div>

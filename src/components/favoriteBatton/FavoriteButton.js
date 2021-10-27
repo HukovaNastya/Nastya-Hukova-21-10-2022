@@ -20,10 +20,10 @@ const AddFavoriteButton = styled (Button)`
   }
 `;
 
-const FavoriteButton = ( ) => {
+const FavoriteButton = ({locationKey, onClick}) => {
   return (
     <div className="container">
-      <AddFavoriteButton  type="dashed" size="large">Add to Favorites</AddFavoriteButton >
+      <AddFavoriteButton  type="dashed" size="large"  onClick={onClick}>Add to Favorites</AddFavoriteButton >
     </div>
   );
 }

@@ -45,21 +45,21 @@ export const getSearchedWeather = (search) => (dispatch) => {
 }
 
 
-export const getFiveDaysForecast = (locationKey) => (dispatch) => {
-  dispatch({ type: FiveDaysForecast_REQUEST_IN_PROGRESS });
-  api
-    .get(`forecasts/v1/daily/5day/${locationKey}`)
-    .then((res) => {
-       dispatch({
-         type: FiveDaysForecast_REQUEST_IN_SUCCESS,
-         payload: res.data
-       });
-       message.success('Request success!');
-    })
-    .catch((err) => {
-      dispatch({
-        type: FiveDaysForecast_REQUEST_IN_ERROR
-      });
-      message.error('Request failed!');
-    })
-}
+// export const getFiveDaysForecast = (locationKey) => (dispatch) => {
+//   dispatch({ type: FiveDaysForecast_REQUEST_IN_PROGRESS });
+//   api
+//     .get(`forecasts/v1/daily/5day/${locationKey}`)
+//     .then((res) => {
+//        dispatch({
+//          type: FiveDaysForecast_REQUEST_IN_SUCCESS,
+//          payload: res.data
+//        });
+//        message.success('Request success!');
+//     })
+//     .catch((err) => {
+//       dispatch({
+//         type: FiveDaysForecast_REQUEST_IN_ERROR
+//       });
+//       message.error('Request failed!');
+//     })
+// }
