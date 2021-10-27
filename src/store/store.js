@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import weatherReducer from './reducers/WeatherReducer';
-import FavouritesReducer from './reducers/FavouritesReducer';
+import FavoritesReducer from './reducers/FavoritesReducer';
 
 const initialState = {};
 
@@ -9,7 +9,7 @@ const middleware = [thunk];
 
 const reducers = combineReducers({
   weather: weatherReducer,
-  favourites: FavouritesReducer
+  favourites: FavoritesReducer
 });
 
 const composeEnhancers =

@@ -1,28 +1,27 @@
 import React, {useEffect} from 'react';
-import styled from 'styled-components';
-import WeatherCard from '../../components/weatherCard/WeatherCard';
+import WeatherCardFavorite from '../../components/weatherCardFavorite/WeatherCardFavorite.js';
 import { Row } from 'antd';
-import {useSelector} from 'react-redux';
-import {useDispatch} from 'react-redux';
-import {getFavouriteLocations} from '../../store/actions/FavouritesActions';
+import {useSelector, useDispatch} from 'react-redux';
+import {getFavoriteLocations} from '../../store/actions/FavouritesActions';
 
 
 const Favorite = () => {
-  const  {favourites} = useSelector( state => state.favourites);
- const dispatch = useDispatch();
-  useEffect(() => dispatch(getFavouriteLocations()),[])
 
+//  const {favoritesForecast} = useSelector( state => state.favoritesForecast);
+//  const dispatch = useDispatch();
+//   useEffect(() => dispatch(getFavoriteLocations()),[]);
 
   return (
     <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
       <Row justify="center" gutter={12} >
-        {favourites.map((favourite) =>
-          (<WeatherCard
-            searchedForecas ={favourite}
-             key = {favourite.id}
+        {/* {favoritesForecast.map((favoriteForecast) =>
+          (<WeatherCardFavorite
+            favoriteForecast ={favoriteForecast}
+             key = {favoriteForecast.id}
            />
           ))
-        }
+        } */}
+        <WeatherCardFavorite></WeatherCardFavorite>
       </Row>
     </div>
   );

@@ -5,7 +5,7 @@ import {
 } from '../types';
 
 const initState = {
-  favouritesForecast: [],
+  favoritesForecast: [],
   isLoading: false,
 };
 
