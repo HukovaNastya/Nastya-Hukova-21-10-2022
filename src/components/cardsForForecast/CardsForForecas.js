@@ -30,15 +30,14 @@ const CardBodyForecast = styled(Card)`
     font-size: 16px;
     color: #5467b8;
   }
-
 `;
 
-const CardsForForecas = ( props) => {
+const CardsForForecas = (props) => {
+
   const date = new Date(props.searchedForecas.Date).toLocaleDateString()
 
   return (
     <ContainerForecast>
-
       <CardBodyForecast>
           <p className="weather-data-day">{date}</p>
           <Space size={35}>

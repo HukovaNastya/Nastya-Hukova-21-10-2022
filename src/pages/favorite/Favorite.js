@@ -16,9 +16,13 @@ const Favorite = () => {
   return (
     <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
       <Row justify="center" gutter={12} >
-        {favourites.map(favourite => {
-          <WeatherCard key={favourite.id} searchedForecast={favourite} city={favourite.city}/>
-        })}
+        {favourites.map((favourite) =>
+          (<WeatherCard
+            searchedForecas ={favourite}
+             key = {favourite.id}
+           />
+          ))
+        }
       </Row>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button } from 'antd';
+import { Button } from 'antd';
 import styled from 'styled-components';
 
 const AddFavoriteButton = styled (Button)`
@@ -20,7 +20,7 @@ const AddFavoriteButton = styled (Button)`
   }
 `;
 
-const FavoriteButton = ({locationKey, onClick}) => {
+const FavoriteButton = ({ onClick }) => {
   return (
     <div className="container">
       <AddFavoriteButton  type="dashed" size="large"  onClick={onClick}>Add to Favorites</AddFavoriteButton >

@@ -23,6 +23,8 @@ export const getSearchedWeather = (search) => (dispatch) => {
         type: SearchedWeatherCity_REQUEST_IN_SUCCESS,
         payload: res.data[0].LocalizedName
       });
+      const localKey = res.data[0].Key;
+      localStorage.setItem('localKey', localKey );
        return api
                 .get(`forecasts/v1/daily/5day/${res.data[0].Key}?metric=true})`)
 
@@ -33,8 +35,6 @@ export const getSearchedWeather = (search) => (dispatch) => {
          payload: res.data.DailyForecasts
        });
        message.success('Request success!');
-       const localKey = res.data[0].Key;
-       localStorage.setItem('localKey', localKey );
     })
     .catch((err) => {
       dispatch({

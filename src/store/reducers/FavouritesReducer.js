@@ -16,9 +16,9 @@ const favouritesReducer = (state = initState, action) => {
         ...state,
         isLoading: true
       };
-      case   GetFavorite_City_IN_SUCCESS:
-        return { ...state, favorites: action.payload };
-      case  GetFavorite_City_IN_ERROR:
+    case GetFavorite_City_IN_SUCCESS:
+      return { ...state, favorites: action.payload };
+    case  GetFavorite_City_IN_ERROR:
       return {
         ...state,
         isLoading: false

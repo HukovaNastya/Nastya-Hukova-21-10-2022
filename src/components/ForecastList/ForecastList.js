@@ -1,19 +1,19 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import CardsForForecas from '../cardsForForecast/CardsForForecas';
-import { Card, Image, Space , Row } from 'antd';
+import { Row } from 'antd';
 
 
 const ForecastList = ( ) => {
-  const {searchedForecast} = useSelector(state => state.weather);
 
+  const {searchedForecast} = useSelector(state => state.weather);
 
   return (
     <div>
-          <Row justify="center" gutter={12}>
+      <Row justify="center" gutter={12}>
         {searchedForecast.map((searchedForecas) =>
           (<CardsForForecas
-            searchedForecas = {searchedForecas}
+             searchedForecas = {searchedForecas}
              key = {searchedForecas.id}
            />
           ))

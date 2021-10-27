@@ -4,12 +4,14 @@ import styled from 'styled-components';
 
 const SectionTitle = styled(Typography)`
   text-transform: uppercase;
+  max-width: 700px;
   font-weight: 700;
   font-size: 54px;
   line-height: 36px;
 
   @media (min-width: 350px) {
     font-weight: 700;
+    max-width: 400px;
     font-size: 14px;
     line-height: 14px;
     margin-top: 20px;
@@ -17,15 +19,15 @@ const SectionTitle = styled(Typography)`
 
   @media (min-width: 520px) {
     font-weight: 700;
+    max-width: 500px;
     font-size: 19px;
     line-height: 14px;
     margin-top: 30px;
     margin-left: 20px;
   }
-
 `;
 
-const ForecastTitle = ( ) => {
+const ForecastTitle = () => {
   const { Title } = Typography;
   return (
     <div className="container">

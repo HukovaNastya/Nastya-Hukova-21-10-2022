@@ -43,6 +43,7 @@ const StyledTitle = styled(Typography)`
 `;
 
 const AppHeader = () => {
+
   const history = useHistory();
 
   const [activeLink, setActiveLink] = useState(NAV_LINKS.home);
