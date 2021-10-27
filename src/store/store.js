@@ -9,7 +9,7 @@ const middleware = [thunk];
 
 const reducers = combineReducers({
   weather: weatherReducer,
-  favourites: FavoritesReducer
+  favorites: FavoritesReducer
 });
 
 const composeEnhancers =

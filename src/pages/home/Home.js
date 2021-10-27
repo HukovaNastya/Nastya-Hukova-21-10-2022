@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styled from 'styled-components';
-import { useDispatch } from "react-redux";
 import Search from '../../components/search/Search';
 import WeatherCard from '../../components/weatherCard/WeatherCard';
 import FavoriteButton from '../../components/favoriteBatton/FavoriteButton';
@@ -11,8 +10,9 @@ import ForecastTitle from '../../components/forecastTitle/ForecastTitle';
 import { Row, Col } from 'antd';
 import ForecastList from '../../components/ForecastList/ForecastList';
 import {getSearchedWeather } from '../../store/actions/WeatherActions';
-import {useSelector} from 'react-redux';
-import {storage} from '../../plugins/Storage';
+import {useDispatch, useSelector} from "react-redux";
+import {localStorageMethods} from '../../plugins/localStorageMethods';
+import {addLocationToFavourites } from '../../store/actions/FavouritesActions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,8 +30,9 @@ const Home = () => {
     },[]);
 
   const onClick = () => {
-    const favorites = storage.getItem('cities') || [];
-    storage.setItem('cities', [...favorites, city]);
+    // dispatch(addLocationToFavourites( 'cities'));
+    const favorites = localStorageMethods.getItem('cities') || [];
+    localStorageMethods.setItem('cities', [...favorites, city]);
   }
 
   return (

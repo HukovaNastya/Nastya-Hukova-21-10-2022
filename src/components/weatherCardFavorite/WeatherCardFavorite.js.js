@@ -3,6 +3,7 @@ import { Card, Image, Space, Button  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { iconUrl } from '../../services/index';
+import {useSelector, useDispatch} from 'react-redux';
 
 const ContainerForWeatherCard = styled.div`
   max-width: 1200px;
@@ -27,7 +28,8 @@ const StyledCard = styled(Card)`
   padding: 40px;
 `;
 
-const WeatherCardFavorite = ({ favoriteForecast, city}) => {
+const WeatherCardFavorite = ({ favorite, city}) => {
+
   return (
     <ContainerForWeatherCard>
       <StyledCard>
