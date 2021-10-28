@@ -21,6 +21,7 @@ const Favorite = () => {
   const [favorites, setFavorites] = useState(loadFromStorage());
  console.log('Favorites', favorites);
   // useEffect(() => dispatch(getFavouriteLocations(favorites)),[]);
+  // useEffect(() => dispatch(getFavouriteLocations(favorites)),[]);
 
   return (
     <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
