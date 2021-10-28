@@ -1,6 +1,6 @@
 import React from 'react';
-import PublickRoutes from './Routes/PublickRoutes';
-import LayoutContent from './Components/Layout/LayoutContent';
+import PublickRoutes from './routes/publickRoutes';
+import LayoutContent from './components/layout/layoutContent';
 
 function App() {
   return (

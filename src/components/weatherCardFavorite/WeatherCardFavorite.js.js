@@ -2,9 +2,9 @@ import React, {useMemo,   useEffect} from 'react';
 import { Card, Image, Space, Button  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { iconUrl } from '../../Services/Index';
+import { iconUrl } from '../../services/index';
 import {useSelector, useDispatch} from 'react-redux';
-import { getSearchedWeather} from '../../Store/Actions/WeatherActions';
+import { getSearchedWeather} from '../../store/actions/weatherActions';
 
 const ContainerForWeatherCard = styled.div`
   max-width: 1200px;

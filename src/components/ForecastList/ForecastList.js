@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import CardsForForecas from '../CardsForForecast/CardsForForecas';
+import CardsForForecas from '../cardsForForecast/cardsForForecas';
 import { Row } from 'antd';
 
 

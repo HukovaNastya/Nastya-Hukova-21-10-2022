@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import { localStorageMethods } from '../../Plugins/LocalStorageMethods';
+import { localStorageMethods } from '../../plugins/localStorageMethods';
 import {
   FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_PROGRESS,
   FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_SUCCESS,
@@ -10,9 +10,9 @@ import {
   GET_FAVOURITES_LOCATION_IN_PROGRESS,
   GET_FAVOURITES_LOCATION_IN_SUCCESS,
   GET_FAVOURITES_LOCATION_IN_ERROR
-} from '../Types';
+} from '../types';
 
-import {getSearchedWeather} from './WeatherActions';
+import {getSearchedWeather} from './weatherActions';
 
 // export const getFavouriteLocations = () => async dispatch => {
 //   dispatch({ type: GET_FAVOURITES_LOCATION_IN_PROGRESS});

@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import weatherReducer from './Reducers/WeatherReducer';
-import FavoritesReducer from './Reducers/FavoritesReducer';
+import weatherReducer from './reducers/weatherReducer';
+import FavoritesReducer from './reducers/favoritesReducer';
 
 const initialState = {};
 

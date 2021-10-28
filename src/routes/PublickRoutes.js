@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Home from '../Pages/Home/Home';
-import Favorite from '../Pages/Favorite/Favorite';
+import Home from '../pages/home/home';
+import Favorite from '../pages/favorite/favorite';
 
 const PublicRouter = ({ children }) => {
   return (

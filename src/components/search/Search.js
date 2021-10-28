@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
-import { getSearchedWeather } from '../../Store/Actions/WeatherActions';
+import { getSearchedWeather } from '../../store/actions/weatherActions';
 import { useDispatch } from "react-redux";
-import './Search.css';
+import './search.css';
 
 const Search = () => {
 

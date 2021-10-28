@@ -3,7 +3,7 @@ import {
   SEARCHED_WEATHER_REQUEST_IN_SUCCESS,
   SEARCHED_WEATHER_REQUEST__IN_ERROR,
   SEARCHED_WEATHER_REQUEST_City_IN_SUCCESS,
-} from '../Types';
+} from '../types';
 
 const initState = {
   searchedForecast: [],

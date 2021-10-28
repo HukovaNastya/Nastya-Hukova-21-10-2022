@@ -3,10 +3,10 @@ import {
   SEARCHED_WEATHER_REQUEST_IN_SUCCESS,
   SEARCHED_WEATHER_REQUEST__IN_ERROR,
   SEARCHED_WEATHER_REQUEST_City_IN_SUCCESS
-} from '../Types';
+} from '../types';
 
 import {  message } from 'antd';
-import api from '../../Plugins/Axios/Axios';
+import api from '../../plugins/axios/axios';
 
 export const getSearchedWeather = (search) => (dispatch) => {
   dispatch({ type: SEARCHED_WEATHER_REQUEST_IN_PROGRESS});
