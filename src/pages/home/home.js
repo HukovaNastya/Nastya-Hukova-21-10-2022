@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import ForecastTitle from '../../components/forecastTitle/forecastTitle';
 import { Row, Col } from 'antd';
-import ForecastList from '../../components/forecastList/forecastList';
+import ForecastList from '../../components/ForecastList/forecastList';
 import {getSearchedWeather } from '../../store/actions/weatherActions';
 import {useDispatch, useSelector} from "react-redux";
 import {localStorageMethods} from '../../plugins/localStorageMethods';
