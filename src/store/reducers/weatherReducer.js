@@ -1,8 +1,8 @@
 import {
   SEARCHED_WEATHER_REQUEST_IN_PROGRESS,
-  SEARCHED_WEATHER_REQUEST_IN_SUCCESS,
-  SEARCHED_WEATHER_REQUEST__IN_ERROR,
-  SEARCHED_WEATHER_REQUEST_City_IN_SUCCESS,
+  SEARCHED_WEATHER_REQUEST_SUCCESS,
+  SEARCHED_WEATHER_REQUEST_ERROR,
+  SEARCHED_WEATHER_REQUEST_CITY_SUCCESS
 } from '../types';
 
 const initState = {
@@ -23,51 +23,21 @@ const weatherReducer = (state = initState, action) => {
         ...state,
         isgetWeatherInProgress: true
       };
-    case SEARCHED_WEATHER_REQUEST_IN_SUCCESS:
+    case SEARCHED_WEATHER_REQUEST_SUCCESS:
       return {
         ...state,
         searchedForecast: action.payload,
       };
-    case SEARCHED_WEATHER_REQUEST__IN_ERROR:
+    case SEARCHED_WEATHER_REQUEST_ERROR:
       return {
         ...state,
         isgetWeatherInProgres: false
       };
-      case SEARCHED_WEATHER_REQUEST_City_IN_SUCCESS:
+      case SEARCHED_WEATHER_REQUEST_CITY_SUCCESS:
         return {
           ...state,
           city: action.payload
         }
-    // case CurrentForecast_REQUEST_IN_PROGRESS:
-    //   return {
-    //     ...state,
-    //     isgetCurrentForecastInProgress: true
-    //   }
-    // case CurrentForecast_REQUEST_IN_SUCCESS:
-    //   return {
-    //     ...state,
-    //     currentForecast: action.payload,
-    //   };
-    // case CurrentForecast_REQUEST_IN_ERROR:
-    //   return {
-    //     ...state,
-    //     isgetCurrentForecastInProgress: false
-    //   };
-    // case FiveDaysForecast_REQUEST_IN_PROGRESS:
-    //   return {
-    //     ...state,
-    //     isgetFiveDaysForecastInProgress: true
-    //   }
-    // case FiveDaysForecast_REQUEST_IN_SUCCESS:
-    //   return {
-    //     ...state,
-    //     fiveDaysForecast: action.payload,
-    //   };
-    // case   FiveDaysForecast_REQUEST_IN_ERROR:
-    //   return {
-    //     ...state,
-    //     isgetFiveDaysForecastInProgress: false
-    //   }
     default:
       return { ...state };
     }
@@ -75,3 +45,6 @@ const weatherReducer = (state = initState, action) => {
 
 
 export default  weatherReducer;
+
+
+

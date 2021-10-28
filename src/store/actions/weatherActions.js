@@ -1,20 +1,20 @@
 import {
   SEARCHED_WEATHER_REQUEST_IN_PROGRESS,
-  SEARCHED_WEATHER_REQUEST_IN_SUCCESS,
-  SEARCHED_WEATHER_REQUEST__IN_ERROR,
-  SEARCHED_WEATHER_REQUEST_City_IN_SUCCESS
+  SEARCHED_WEATHER_REQUEST_SUCCESS,
+  SEARCHED_WEATHER_REQUEST_ERROR,
+  SEARCHED_WEATHER_REQUEST_CITY_SUCCESS
 } from '../types';
 
 import {  message } from 'antd';
 import api from '../../plugins/axios/axios';
 
 export const getSearchedWeather = (search) => (dispatch) => {
-  dispatch({ type: SEARCHED_WEATHER_REQUEST_IN_PROGRESS});
+  dispatch({ type: SEARCHED_WEATHER_REQUEST_IN_PROGRESS });
   api
     .get(`locations/v1/cities/autocomplete?q=${search}`)
     .then((res) => {
       dispatch({
-        type: SEARCHED_WEATHER_REQUEST_City_IN_SUCCESS,
+        type: SEARCHED_WEATHER_REQUEST_CITY_SUCCESS,
         payload: res.data[0].LocalizedName
       });
       const localKey = res.data[0].Key;
@@ -25,14 +25,14 @@ export const getSearchedWeather = (search) => (dispatch) => {
      })
     .then((res) => {
        dispatch({
-         type: SEARCHED_WEATHER_REQUEST_IN_SUCCESS,
+         type: SEARCHED_WEATHER_REQUEST_SUCCESS,
          payload: res.data.DailyForecasts
        });
        message.success('Request success!');
     })
     .catch((err) => {
       dispatch({
-        type: SEARCHED_WEATHER_REQUEST__IN_ERROR
+        type: SEARCHED_WEATHER_REQUEST_ERROR
       });
       message.error('Request failed!');
     })

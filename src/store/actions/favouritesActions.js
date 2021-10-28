@@ -2,13 +2,13 @@ import { message } from 'antd';
 import { localStorageMethods } from '../../plugins/localStorageMethods';
 import {
   FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_PROGRESS,
-  FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_SUCCESS,
-  FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_ERROR,
+  FAVOURITES_LOCATION_ADDED_TO_FAVORITE_SUCCESS,
+  FAVOURITES_LOCATION_ADDED_TO_FAVORITE_ERROR,
   FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_IN_PROGRESS,
-  FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_IN_SUCCESS,
-  FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_IN_ERROR,
+  FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_SUCCESS,
+  FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_ERROR,
   GET_FAVOURITES_LOCATION_IN_PROGRESS,
-  GET_FAVOURITES_LOCATION_IN_SUCCESS,
+  GET_FAVOURITES_LOCATION_SUCCESS,
   GET_FAVOURITES_LOCATION_IN_ERROR
 } from '../types';
 
@@ -51,7 +51,7 @@ export const addLocationToFavourites = locationKey => dispatch => {
     localStorageMethods.setItem('cities', newData);
 
     dispatch({
-      type: FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_SUCCESS,
+      type: FAVOURITES_LOCATION_ADDED_TO_FAVORITE_SUCCESS,
       payload: locationKey
     });
     message.success('Request success!');
@@ -59,7 +59,7 @@ export const addLocationToFavourites = locationKey => dispatch => {
   catch (error) {
     console.error(error);
     dispatch({
-      type: FAVOURITES_LOCATION_ADDED_TO_FAVORITE_IN_ERROR,
+      type: FAVOURITES_LOCATION_ADDED_TO_FAVORITE_ERROR,
       error: error
     });
     message.error('Request failed!');
@@ -76,7 +76,7 @@ export const deleteLocationFromFavourites = locationKey => dispatch => {
     localStorageMethods.setItem('favorites', newData);
 
     dispatch({
-      type: FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_IN_SUCCESS,
+      type: FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_SUCCESS,
       payload: locationKey
     });
 
@@ -84,7 +84,7 @@ export const deleteLocationFromFavourites = locationKey => dispatch => {
   } catch (error) {
     console.error(error);
     dispatch({
-      type: FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_IN_ERROR,
+      type: FAVOURITES_LOCATION_DELETED_FROM_FAVORITE_ERROR,
       error: error
     });
     message.error('Request failed!');
@@ -104,7 +104,7 @@ export const getFavouriteLocations = () => async dispatch => {
       favouritesForecast.push(response.data);
     }
     dispatch({
-      type: GET_FAVOURITES_LOCATION_IN_SUCCESS,
+      type: GET_FAVOURITES_LOCATION_SUCCESS,
       payload: favouritesForecast
     });
 
