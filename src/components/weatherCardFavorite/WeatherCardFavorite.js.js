@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useMemo,   useEffect} from 'react';
 import { Card, Image, Space, Button  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { iconUrl } from '../../Services/Index';
 import {useSelector, useDispatch} from 'react-redux';
+import { getSearchedWeather} from '../../Store/Actions/WeatherActions';
 
 const ContainerForWeatherCard = styled.div`
   max-width: 1200px;
@@ -28,8 +29,12 @@ const StyledCard = styled(Card)`
   padding: 40px;
 `;
 
-const WeatherCardFavorite = ({ favorite, city}) => {
-
+const WeatherCardFavorite = ({ favorite, searchedForecast, city}) => {
+  // const dispatch = useDispatch();
+  // useEffect(() => dispatch(getSearchedWeather(favorite)),[]);
+  // const iconUrlForWeatherCard = useMemo(() => iconUrl(searchedForecast?.[0]?.Day.Icon), [searchedForecast?.[0]?.Day.Icon]);
+  // const tenperatureForWeatherCard = searchedForecast[0]?.Temperature.Maximum.Value;
+  // const unitForTenperatureInWeatherCard = searchedForecast[0]?.Temperature.Maximum.Unit;
   return (
     <ContainerForWeatherCard>
       <StyledCard>
@@ -37,7 +42,7 @@ const WeatherCardFavorite = ({ favorite, city}) => {
           <Image width={100} src='' preview={false} />
           <div>
             <p className="weather-data-city-favorite">
-              <span>City: {city}</span> Санкт-Петербург
+              <span>City: {city}</span>
             </p>
             <p className="weather-data-temp-favorite">
               <span>Temperature:</span>
