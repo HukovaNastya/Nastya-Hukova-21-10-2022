@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image, Space, Button  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { iconUrl } from '../../services/index';
+import { iconUrl } from '../../Services/Index';
 import {useSelector, useDispatch} from 'react-redux';
 
 const ContainerForWeatherCard = styled.div`

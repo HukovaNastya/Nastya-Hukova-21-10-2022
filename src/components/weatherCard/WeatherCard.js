@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Card, Image, Space  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { iconUrl } from '../../services/index';
+import { iconUrl } from '../../Services/Index';
 
 const WeatherCardContainer = styled.div`
   max-width: 1200px;

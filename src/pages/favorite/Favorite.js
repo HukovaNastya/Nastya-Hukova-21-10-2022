@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import WeatherCardFavorite from '../../components/weatherCardFavorite/WeatherCardFavorite.js';
+import WeatherCardFavorite from '../../Components/WeatherCardFavorite/WeatherCardFavorite.js.js';
 import { Row } from 'antd';
 import { useDispatch } from 'react-redux';
-import { getFavouriteLocations } from '../../store/actions/FavouritesActions';
-import {localStorageMethods} from '../../plugins/localStorageMethods';
+import { getFavouriteLocations } from '../../Store/Actions/FavouritesActions';
+import {localStorageMethods} from '../../Plugins/LocalStorageMethods';
 
 const Favorite = () => {
 

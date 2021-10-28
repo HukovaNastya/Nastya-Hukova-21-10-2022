@@ -8,7 +8,7 @@ import {
   GET_FAVOURITES_LOCATION_IN_PROGRESS,
   GET_FAVOURITES_LOCATION_IN_SUCCESS,
   GET_FAVOURITES_LOCATION_IN_ERROR
-} from '../types';
+} from '../Types';
 
 const initState = {
   favoritesForecast: [],

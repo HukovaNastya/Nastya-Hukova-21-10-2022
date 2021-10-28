@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
-import { getSearchedWeather } from '../../store/actions/WeatherActions';
+import { getSearchedWeather } from '../../Store/Actions/WeatherActions';
 import { useDispatch } from "react-redux";
 import './Search.css';
 

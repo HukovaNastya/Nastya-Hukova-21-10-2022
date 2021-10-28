@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styled from 'styled-components';
-import Search from '../../components/search/Search';
-import WeatherCard from '../../components/weatherCard/WeatherCard';
-import FavoriteButton from '../../components/favoriteBatton/FavoriteButton';
+import Search from '../../Components/Search/Search';
+import WeatherCard from '../../Components/WeatherCard/WeatherCard';
+import FavoriteButton from '../../Components/FavoriteBatton/FavoriteButton';
 import { Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import ForecastTitle from '../../components/forecastTitle/ForecastTitle';
+import ForecastTitle from '../../Components/ForecastTitle/ForecastTitle';
 import { Row, Col } from 'antd';
-import ForecastList from '../../components/ForecastList/ForecastList';
-import {getSearchedWeather } from '../../store/actions/WeatherActions';
+import ForecastList from '../../Components/ForecastList/ForecastList';
+import {getSearchedWeather } from '../../Store/Actions/WeatherActions';
 import {useDispatch, useSelector} from "react-redux";
-import {localStorageMethods} from '../../plugins/localStorageMethods';
-import {addLocationToFavourites } from '../../store/actions/FavouritesActions';
-import useGeolocation from  '../../services/Geolocation';
+import {localStorageMethods} from '../../Plugins/LocalStorageMethods';
+import {addLocationToFavourites } from '../../Store/Actions/FavouritesActions';
+import useGeolocation from  '../../Services/Geolocation';
 
 const Wrapper = styled.div`
   display: flex;
