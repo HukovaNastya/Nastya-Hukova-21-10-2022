@@ -9,26 +9,26 @@ const Favorite = () => {
 
   const dispatch = useDispatch();
   const loadFromStorage = () => {
-  let val = localStorageMethods.getItem('cities');
-    return val ? JSON.parse(val) : [];
+  // let val = localStorageMethods.getItem('cities');
+  //   return val ? JSON.parse(val) : [];
+  let favoriteCities = localStorageMethods.getItem('cities');
+  console.log(favoriteCities)
+  if(typeof favoriteCities === 'string' ) {
+    favoriteCities = JSON.parse(favoriteCities);
+  }
+  return favoriteCities;
   };
-  const [cities, setCities] = useState(loadFromStorage());
-
-  useEffect(() => {
-    dispatch(getFavouriteLocations());
-  }, [cities, dispatch]);
-
-//  const {favoritesForecast} = useSelector( state => state.favoritesForecast);
-//  const dispatch = useDispatch();
-  useEffect(() => dispatch(getFavouriteLocations(cities)),[]);
+  const [favorites, setFavorites] = useState(loadFromStorage());
+ console.log('Favorites', favorites);
+  useEffect(() => dispatch(getFavouriteLocations(favorites)),[]);
 
   return (
     <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
       <Row justify="center" gutter={12} >
-        {cities.map((citi) =>
+        {favorites.map((favorite) =>
           (<WeatherCardFavorite
-            citi ={citi}
-             key = {citi.id}
+            favorite ={favorite}
+            key = {favorite.id}
            />
           ))
         }
