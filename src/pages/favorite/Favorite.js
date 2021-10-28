@@ -16,8 +16,8 @@ const Favorite = () => {
   if(typeof favoriteCities === 'string' ) {
     favoriteCities = JSON.parse(favoriteCities);
   }
-  return favoriteCities;
-  };
+  return  favoriteCities;
+};
   const [favorites, setFavorites] = useState(loadFromStorage());
  console.log('Favorites', favorites);
   // useEffect(() => dispatch(getFavouriteLocations(favorites)),[]);

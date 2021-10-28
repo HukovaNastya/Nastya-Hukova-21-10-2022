@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { Card, Image, Space  } from 'antd';
 import styled from 'styled-components';
 import {iconUrl} from '../../Services/Index';
@@ -34,7 +34,10 @@ const CardBodyForecast = styled(Card)`
 
 const CardsForForecas = (props) => {
 
-  const date = new Date(props.searchedForecas.Date).toLocaleDateString()
+  const date = new Date(props.searchedForecas.Date).toLocaleDateString();
+  const iconUrlForForecastCard = useMemo(() => iconUrl(props.searchedForecas.Day.Icon), [props.searchedForecas.Day.Icon]);
+  const tenperatureForForecastrCard = props.searchedForecas?.Temperature.Maximum.Value;
+  const unitForTenperatureInForecastrCard = props.searchedForecas?.Temperature.Maximum.Unit;
 
   return (
     <ContainerForecast>
@@ -43,11 +46,11 @@ const CardsForForecas = (props) => {
           <Space size={35}>
             <Image
               width={40}
-              src={iconUrl(props.searchedForecas.Day.Icon)}
+              src={iconUrlForForecastCard}
               preview={false}
             />
             <div className="weather-data-forecast">
-              <h5 className="weather-data-forecast-temp"> {props.searchedForecas?.Temperature.Maximum.Value}{props.searchedForecas?.Temperature.Maximum.Unit}</h5>
+              <h5 className="weather-data-forecast-temp"> {tenperatureForForecastrCard}{unitForTenperatureInForecastrCard }</h5>
             </div>
           </Space>
         </CardBodyForecast>

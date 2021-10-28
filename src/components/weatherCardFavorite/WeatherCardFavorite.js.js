@@ -31,7 +31,7 @@ const StyledCard = styled(Card)`
 
 const WeatherCardFavorite = ({ favorite, searchedForecast, city}) => {
   // const dispatch = useDispatch();
-  // useEffect(() => dispatch(getSearchedWeather(favorite)),[]);
+  // useEffect(() => dispatch(getSearchedWeather(favorite)));
   // const iconUrlForWeatherCard = useMemo(() => iconUrl(searchedForecast?.[0]?.Day.Icon), [searchedForecast?.[0]?.Day.Icon]);
   // const tenperatureForWeatherCard = searchedForecast[0]?.Temperature.Maximum.Value;
   // const unitForTenperatureInWeatherCard = searchedForecast[0]?.Temperature.Maximum.Unit;
@@ -39,10 +39,10 @@ const WeatherCardFavorite = ({ favorite, searchedForecast, city}) => {
     <ContainerForWeatherCard>
       <StyledCard>
         <Space size={32}>
-          <Image width={100} src='' preview={false} />
+          <Image width={100}  src='' preview={false} />
           <div>
             <p className="weather-data-city-favorite">
-              <span>City: {city}</span>
+              <span>City: </span>
             </p>
             <p className="weather-data-temp-favorite">
               <span>Temperature:</span>
