@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import WeatherCardFavorite from '../../components/weatherCardFavorite/WeatherCardFavorite.js';
 import { Row } from 'antd';
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getFavouriteLocations } from '../../store/actions/FavouritesActions';
 import {localStorageMethods} from '../../plugins/localStorageMethods';
 
-
-
 const Favorite = () => {
+
   const dispatch = useDispatch();
   const loadFromStorage = () => {
   let val = localStorageMethods.getItem('cities');
@@ -15,10 +14,9 @@ const Favorite = () => {
   };
   const [favorites, setFavorites] = useState(loadFromStorage());
 
-
-  // useEffect(() => {
-  //   dispatch(getFavouriteLocations());
-  // }, [favorites, dispatch]);
+  useEffect(() => {
+    dispatch(getFavouriteLocations());
+  }, [favorites, dispatch]);
 
 //  const {favoritesForecast} = useSelector( state => state.favoritesForecast);
 //  const dispatch = useDispatch();

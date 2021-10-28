@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import { Card, Image, Space  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -45,7 +45,9 @@ const StyledWeatherCard = styled(Card)`
 
 
 const WeatherCard = ({ searchedForecast, city} ) => {
-  // const iconUrl = useMemo(() => ));
+  const iconUrlForWeatherCard = useMemo(() => iconUrl(searchedForecast?.[0]?.Day.Icon), [searchedForecast?.[0]?.Day.Icon]);
+  const tenperatureForWeatherCard = searchedForecast[0]?.Temperature.Maximum.Value;
+  const unitForTenperatureInWeatherCard = searchedForecast[0]?.Temperature.Maximum.Unit;
   return (
     <WeatherCardContainer>
       <StyledWeatherCard >
@@ -53,12 +55,12 @@ const WeatherCard = ({ searchedForecast, city} ) => {
           <Image
             className="weather-img"
             width={100}
-            src={iconUrl(searchedForecast?.[0]?.Day.Icon)}
+            src={iconUrlForWeatherCard}
             preview={false}
           />
           <div>
             <p ><span>City:</span> {city}</p>
-            <p ><span>Temperature: </span> {searchedForecast[0]?.Temperature.Maximum.Value}{searchedForecast[0]?.Temperature.Maximum.Unit}</p>
+            <p ><span>Temperature: </span> {tenperatureForWeatherCard}{unitForTenperatureInWeatherCard }</p>
           </div>
         </Space>
       </StyledWeatherCard >
