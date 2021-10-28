@@ -13,6 +13,7 @@ import {getSearchedWeather } from '../../store/actions/WeatherActions';
 import {useDispatch, useSelector} from "react-redux";
 import {localStorageMethods} from '../../plugins/localStorageMethods';
 import {addLocationToFavourites } from '../../store/actions/FavouritesActions';
+import useGeolocation from  '../../services/Geolocation';
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,12 +23,26 @@ const Wrapper = styled.div`
 
 const Home = () => {
   const dispatch = useDispatch();
-
   const {searchedForecast, city} = useSelector(state => state.weather);
 
-  useEffect(() => {
-      dispatch(getSearchedWeather('Tel Aviv'));
-    },[]);
+  const geolocationPosition = useGeolocation()
+
+
+
+  // useEffect(() => {
+  //     dispatch(getSearchedWeather('Tel Aviv'));
+  //   },[]);
+    useEffect(() => {
+
+      const geolocationEnabled = geolocationPosition.coords && 'Tel Aviv'
+
+      if (geolocationEnabled) {
+        const { latitude, longitude } = geolocationPosition.coords
+        dispatch(getSearchedWeather({ latitude, longitude }))
+      } else if ('Tel Aviv') {
+        dispatch(getSearchedWeather('Tel Aviv'))
+      }
+    }, [dispatch, geolocationPosition.coords])
 
   const onClick = () => {
     // dispatch(addLocationToFavourites('cities'));
@@ -41,11 +56,11 @@ const Home = () => {
       <div>
         <Row justify="space-between" gutter={12} >
           <div style={{margin: '20px 0px 0px 172px'}}>
-            <WeatherCard searchedForecast={searchedForecast} city={city}></WeatherCard>
+            <WeatherCard searchedForecast={searchedForecast} city={city}/>
           </div>
           <Space size={10}>
             {/* <FontAwesomeIcon icon={faHeart} size="3x" style={{ color: '#dea310' }}/> */}
-            <FavoriteButton onClick={onClick}></FavoriteButton>
+            <FavoriteButton onClick={onClick}/>
           </Space>
         </Row>
       </div>
@@ -53,7 +68,7 @@ const Home = () => {
        < ForecastTitle/>
       </div>
       <div>
-        <ForecastList></ForecastList>
+        <ForecastList/>
       </div>
     </Wrapper>
   );

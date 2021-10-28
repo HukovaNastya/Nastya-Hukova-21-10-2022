@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import WeatherCardFavorite from '../../components/weatherCardFavorite/WeatherCardFavorite.js';
 import { Row } from 'antd';
 import {useSelector, useDispatch} from 'react-redux';
-import {getFavouriteLocations} from '../../store/actions/FavouritesActions';
+import { getFavouriteLocations } from '../../store/actions/FavouritesActions';
 import {localStorageMethods} from '../../plugins/localStorageMethods';
 
 
@@ -27,7 +27,7 @@ const Favorite = () => {
   return (
     <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
       <Row justify="center" gutter={12} >
-        {cities.map((favorite) =>
+        {favorites.map((favorite) =>
           (<WeatherCardFavorite
             favorite ={favorite}
              key = {favorite.id}

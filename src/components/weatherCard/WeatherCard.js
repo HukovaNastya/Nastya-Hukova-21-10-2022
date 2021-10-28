@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { Card, Image, Space  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { iconUrl } from '../../services/index';
-import './WeatherCard.css';
 
 const WeatherCardContainer = styled.div`
   max-width: 1200px;
@@ -46,6 +45,7 @@ const StyledWeatherCard = styled(Card)`
 
 
 const WeatherCard = ({ searchedForecast, city} ) => {
+  // const iconUrl = useMemo(() => ));
   return (
     <WeatherCardContainer>
       <StyledWeatherCard >
