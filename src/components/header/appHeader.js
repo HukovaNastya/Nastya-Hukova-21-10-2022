@@ -16,11 +16,6 @@ const StyledHeader = styled(Header)`
   background-color: transparent;
 `;
 
-const StyledButton = styled(Button)`
-  background-color: ${props => (props.bgColor ? '#4793ff' : '#fff')};
-  border: none;
-`;
-
 const StyledTitle = styled(Typography)`
   text-transform: uppercase;
   font-weight: 700;
@@ -43,7 +38,6 @@ const StyledTitle = styled(Typography)`
 `;
 
 const AppHeader = () => {
-
   const history = useHistory();
 
   const [activeLink, setActiveLink] = useState(NAV_LINKS.home);
@@ -62,15 +56,15 @@ const AppHeader = () => {
     <StyledHeader>
       <StyledTitle style={{ color: '#5467b8' }}>Herolo weather task</StyledTitle>
       <Space size={10}>
-        <StyledButton size="large" onClick={redirectToHomePage} bgColor={activeLink === NAV_LINKS.home}>
+        <Button size="large" onClick={redirectToHomePage} type={activeLink === NAV_LINKS.home ? "primary": "default"}>
           Home
-        </StyledButton>
-        <StyledButton size="large" onClick={redirectToFavouritesPage} bgColor={activeLink === NAV_LINKS.favourites}>
+        </Button>
+        <Button size="large" onClick={redirectToFavouritesPage} type={activeLink === NAV_LINKS.favourites ? "primary": "default"}>
           Favorites
-        </StyledButton>
+        </Button>
       </Space>
     </StyledHeader>
   );
 };
 
-export default AppHeader;
+export default AppHeader

@@ -1,19 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import styled from 'styled-components';
 import Search from '../../components/search/search';
 import WeatherCard from '../../components/weatherCard/weatherCard';
 import FavoriteButton from '../../components/favoriteBatton/favoriteButton';
-import { Space } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {Alert, Space} from 'antd';
 import ForecastTitle from '../../components/forecastTitle/forecastTitle';
-import { Row, Col } from 'antd';
+import { Row } from 'antd';
 import ForecastList from '../../components/ForecastList/forecastList';
-import {getSearchedWeather } from '../../store/actions/weatherActions';
+import { getCityWeatherByKey } from '../../store/actions/weatherActions';
 import {useDispatch, useSelector} from "react-redux";
-import {localStorageMethods} from '../../plugins/localStorageMethods';
-import {addLocationToFavourites } from '../../store/actions/favouritesActions';
-import useGeolocation from  '../../services/geolocation';
+import {setSelectedCity} from "../../store/actions/citiesActions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,55 +17,50 @@ const Wrapper = styled.div`
   gap: 30px;
 `;
 
+const DEFAULT_CITY_KEY = "215854"
+const DEFAULT_CITY_NAME = "Tel Aviv"
+
 const Home = () => {
   const dispatch = useDispatch();
-  const {searchedForecast, city} = useSelector(state => state.weather);
+  const { searchedForecast } = useSelector(state => state.weather);
+  const { selectedCity } = useSelector(state => state.cities);
 
-  const geolocationPosition = useGeolocation()
+  useEffect(() => {
+    dispatch(setSelectedCity({ name: DEFAULT_CITY_NAME, key: DEFAULT_CITY_KEY }))
+    dispatch(getCityWeatherByKey(DEFAULT_CITY_KEY))
+  }, [])
 
-
-
-  // useEffect(() => {
-  //     dispatch(getSearchedWeather('Tel Aviv'));
-  //   },[]);
-    useEffect(() => {
-
-      const geolocationEnabled = geolocationPosition.coords && 'Tel Aviv'
-
-      if (geolocationEnabled) {
-        const { latitude, longitude } = geolocationPosition.coords
-        dispatch(getSearchedWeather({ latitude, longitude }))
-      } else if ('Tel Aviv') {
-        dispatch(getSearchedWeather('Tel Aviv'))
-      }
-    }, [dispatch, geolocationPosition.coords])
-
-  const onClick = () => {
-    // dispatch(addLocationToFavourites('cities'));
-    const favorites = localStorageMethods.getItem('cities') || [];
-    localStorageMethods.setItem('cities', [...favorites, city]);
+  const onSearchSelect = (selectedCity) => {
+    dispatch(getCityWeatherByKey(selectedCity.value))
   }
 
   return (
     <Wrapper>
-      <Search />
-      <div>
-        <Row justify="space-between" gutter={12} >
-          <div style={{margin: '20px 0px 0px 172px'}}>
-            <WeatherCard searchedForecast={searchedForecast} city={city}/>
-          </div>
-          <Space size={10}>
-            {/* <FontAwesomeIcon icon={faHeart} size="3x" style={{ color: '#dea310' }}/> */}
-            <FavoriteButton onClick={onClick}/>
-          </Space>
-        </Row>
-      </div>
-      <div>
-       < ForecastTitle/>
-      </div>
-      <div>
-        <ForecastList/>
-      </div>
+      <Search onSearchSelect={onSearchSelect} />
+        { selectedCity ? (
+            <>
+              <div>
+                <Row justify="space-between" gutter={12} >
+                  <div style={{margin: '20px 0px 0px 200px'}}>
+                    <WeatherCard searchedForecast={searchedForecast} city={selectedCity.name}/>
+                  </div>
+
+                    <FavoriteButton currentCityKey={selectedCity.key} />
+
+                </Row>
+              </div>
+              <div>
+               <ForecastTitle/>
+              </div>
+              <div>
+                <ForecastList searchedForecast={searchedForecast}/>
+              </div>
+            </>
+        ) : (
+            <div style={{width: "100%"}}>
+              <Alert message="No city selected" type="info" />
+            </div>
+        ) }
     </Wrapper>
   );
 };

@@ -1,21 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import CardsForForecas from '../cardsForForecast/cardsForForecas';
-import { Row } from 'antd';
+import CardsForForecast  from '../cardsForForecast/cardsForForecas';
+import { Row, Col } from 'antd';
 
 
-const ForecastList = ( ) => {
-
-  const {searchedForecast} = useSelector(state => state.weather);
-
+const ForecastList = ({ searchedForecast }) => {
   return (
     <div>
       <Row justify="center" gutter={12}>
-        {searchedForecast.map((searchedForecas) =>
-          (<CardsForForecas
-             searchedForecas = {searchedForecas}
-             key = {searchedForecas.id}
-           />
+        {searchedForecast.map((item, index) =>
+          (
+            <Col key={index}>
+              <CardsForForecast searchedForecas={item} />
+            </Col>
           ))
         }
       </Row>

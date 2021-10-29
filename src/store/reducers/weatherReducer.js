@@ -2,18 +2,12 @@ import {
   SEARCHED_WEATHER_REQUEST_IN_PROGRESS,
   SEARCHED_WEATHER_REQUEST_SUCCESS,
   SEARCHED_WEATHER_REQUEST_ERROR,
-  SEARCHED_WEATHER_REQUEST_CITY_SUCCESS
 } from '../types';
 
 const initState = {
   searchedForecast: [],
-  currentForecast: [],
   fiveDaysForecast: [],
-  city: '',
-  loading: false,
-  isgetWeatherInProgress: false,
-  isgetCurrentForecastInProgress: false,
-  isgetFiveDaysForecastInProgress: false
+  isGetWeatherInProgress: false,
 };
 
 const weatherReducer = (state = initState, action) => {
@@ -21,7 +15,7 @@ const weatherReducer = (state = initState, action) => {
     case SEARCHED_WEATHER_REQUEST_IN_PROGRESS:
       return {
         ...state,
-        isgetWeatherInProgress: true
+        isGetWeatherInProgress: true
       };
     case SEARCHED_WEATHER_REQUEST_SUCCESS:
       return {
@@ -31,13 +25,8 @@ const weatherReducer = (state = initState, action) => {
     case SEARCHED_WEATHER_REQUEST_ERROR:
       return {
         ...state,
-        isgetWeatherInProgres: false
+        isGetWeatherInProgress: false
       };
-      case SEARCHED_WEATHER_REQUEST_CITY_SUCCESS:
-        return {
-          ...state,
-          city: action.payload
-        }
     default:
       return { ...state };
     }

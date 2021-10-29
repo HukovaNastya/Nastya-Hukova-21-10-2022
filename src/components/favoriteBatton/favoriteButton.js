@@ -1,31 +1,40 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { Button } from 'antd';
-import styled from 'styled-components';
+import {useDispatch, useSelector} from "react-redux";
+import {addToFavorite, removeFromFavorite} from "../../store/actions/favouritesActions";
 
-const AddFavoriteButton = styled (Button)`
-  margin-top: 90px;
-  margin-left: 190px;
-  @media (max-width: 1000px) {
-    margin-top: 90px;
-    margin-left: 190px;
-  }
+const FavoriteButton = ({ currentCityKey }) => {
+    const dispatch = useDispatch()
+    const { favoriteForecasts } = useSelector((store) => store.favorites)
+    const { searchedForecast } = useSelector(state => state.weather);
+    const { selectedCity } = useSelector(state => state.cities);
 
-  @media (max-width: 780px) {
-    margin-top: 90px;
-    margin-left: 150px;
-  }
-  @media (max-width: 505px) {
-    margin-top: 90px;
-    margin-left: 20px;
-  }
-`;
+    const isCityExist = useMemo(
+      () => favoriteForecasts.some(item => item.city.key === currentCityKey),
+      [favoriteForecasts, currentCityKey]
+    )
 
-const FavoriteButton = ({ onClick }) => {
-  return (
-    <div className="container">
-      <AddFavoriteButton  type="dashed" size="large"  onClick={onClick}>Add to Favorites</AddFavoriteButton >
-    </div>
-  );
+    const handleButtonClick = () => {
+      if (isCityExist) {
+        dispatch(removeFromFavorite(currentCityKey))
+        return
+      }
+
+      dispatch(addToFavorite({
+        weather: JSON.parse(JSON.stringify(searchedForecast)),
+        city: { ...selectedCity },
+      }))
+    }
+
+    return (
+      <div className="container">
+        <Button type="primary" style={{margin: '40px 130px 50px 0px'}} danger={isCityExist} size="large" onClick={handleButtonClick}>
+          {
+            isCityExist ? "Remove from Favorites" :  "Add to Favorites"
+          }
+        </Button>
+      </div>
+    );
 }
 
 export default FavoriteButton;

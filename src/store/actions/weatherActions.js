@@ -2,58 +2,22 @@ import {
   SEARCHED_WEATHER_REQUEST_IN_PROGRESS,
   SEARCHED_WEATHER_REQUEST_SUCCESS,
   SEARCHED_WEATHER_REQUEST_ERROR,
-  SEARCHED_WEATHER_REQUEST_CITY_SUCCESS
 } from '../types';
 
-import {  message } from 'antd';
 import api from '../../plugins/axios/axios';
 
-export const getSearchedWeather = (search) => (dispatch) => {
+export const getCityWeatherByKey = (cityKey) => async (dispatch) => {
   dispatch({ type: SEARCHED_WEATHER_REQUEST_IN_PROGRESS });
-  api
-    .get(`locations/v1/cities/autocomplete?q=${search}`)
-    .then((res) => {
-      dispatch({
-        type: SEARCHED_WEATHER_REQUEST_CITY_SUCCESS,
-        payload: res.data[0].LocalizedName
-      });
-      const localKey = res.data[0].Key;
-      localStorage.setItem('localKey', localKey );
-       return api
-                .get(`forecasts/v1/daily/5day/${res.data[0].Key}?metric=true})`)
 
-     })
-    .then((res) => {
-       dispatch({
-         type: SEARCHED_WEATHER_REQUEST_SUCCESS,
-         payload: res.data.DailyForecasts
-       });
-       message.success('Request success!');
-    })
-    .catch((err) => {
-      dispatch({
-        type: SEARCHED_WEATHER_REQUEST_ERROR
-      });
-      message.error('Request failed!');
-    })
+  try {
+    const res = await api.get(`forecasts/v1/daily/5day/${cityKey}?metric=true`)
+    dispatch({
+      type: SEARCHED_WEATHER_REQUEST_SUCCESS,
+      payload: res.data.DailyForecasts
+    });
+  } catch (err) {
+    dispatch({
+      type: SEARCHED_WEATHER_REQUEST_ERROR
+    });
+  }
 }
-
-
-// export const getFiveDaysForecast = (locationKey) => (dispatch) => {
-//   dispatch({ type: FiveDaysForecast_REQUEST_IN_PROGRESS });
-//   api
-//     .get(`forecasts/v1/daily/5day/${locationKey}`)
-//     .then((res) => {
-//        dispatch({
-//          type: FiveDaysForecast_REQUEST_IN_SUCCESS,
-//          payload: res.data
-//        });
-//        message.success('Request success!');
-//     })
-//     .catch((err) => {
-//       dispatch({
-//         type: FiveDaysForecast_REQUEST_IN_ERROR
-//       });
-//       message.error('Request failed!');
-//     })
-// }

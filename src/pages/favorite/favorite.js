@@ -1,42 +1,31 @@
-import React, {useState, useEffect} from 'react';
-import WeatherCardFavorite from '../../components/weatherCardFavorite/weatherCardFavorite.js.js';
-import { Row } from 'antd';
-import { useDispatch } from 'react-redux';
-import { getFavouriteLocations } from '../../store/actions/favouritesActions';
-import {localStorageMethods} from '../../plugins/localStorageMethods';
+import React from 'react';
+import { Row, Col } from 'antd';
+import {useSelector} from 'react-redux';
+import WeatherCard from "../../components/weatherCard/weatherCard";
+import FavoriteButton from "../../components/favoriteBatton/favoriteButton";
 
 const Favorite = () => {
+    const { favoriteForecasts } = useSelector((state) => state.favorites)
 
-  const dispatch = useDispatch();
-  const loadFromStorage = () => {
-  // let val = localStorageMethods.getItem('cities');
-  //   return val ? JSON.parse(val) : [];
-  let favoriteCities = localStorageMethods.getItem('cities');
-  console.log(favoriteCities)
-  if(typeof favoriteCities === 'string' ) {
-    favoriteCities = JSON.parse(favoriteCities);
-  }
-  return  favoriteCities;
-};
-  const [favorites, setFavorites] = useState(loadFromStorage());
- console.log('Favorites', favorites);
-  // useEffect(() => dispatch(getFavouriteLocations(favorites)),[]);
-  // useEffect(() => dispatch(getFavouriteLocations(favorites)),[]);
-
-  return (
-    <div className="weather-card-wrap" style={{margin: '40px 0px 0px 0px'}}>
-      <Row justify="center" gutter={12} >
-        {favorites.map((favorite) =>
-          (<WeatherCardFavorite
-            favorite ={favorite}
-            key = {favorite.id}
-           />
-          ))
-        }
-        <WeatherCardFavorite></WeatherCardFavorite>
-      </Row>
-    </div>
-  );
+    return (
+      <div className="weather-card-wrap" style={{margin: '80px 0px 0px 0px'}}>
+        <Row justify="center" gutter={48}>
+          {favoriteForecasts.map((favorite, index) =>
+            (
+              <Col key={index} >
+                <WeatherCard
+                   searchedForecast={favorite.weather}
+                   city={favorite.city.name}
+                />
+                <div style={{ "margin-top": 20 }}>
+                   <FavoriteButton currentCityKey={favorite.city.key}/>
+                 </div>
+              </Col>
+            ))
+            }
+          </Row>
+        </div>
+    );
 };
 
 export default Favorite;

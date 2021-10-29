@@ -2,12 +2,10 @@ import React, { useMemo } from 'react';
 import { Card, Image, Space  } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { iconUrl } from '../../services/index';
+import { iconUrl } from '../../services/iconService';
 
 const WeatherCardContainer = styled.div`
   max-width: 1200px;
-  margin-top: 60px;
-  margin-left: 30px;
   & p {
     font-weight: 500;
     font-size: 16px;
@@ -20,11 +18,9 @@ const WeatherCardContainer = styled.div`
   }
   @media (max-width: 780px) {
     max-width: 600px;
-    margin-left: -90px;
   }
   @media (max-width: 350px) {
     max-width: 300px;
-    margin-left: -90px;
   }
 `;
 
@@ -39,18 +35,19 @@ const StyledWeatherCard = styled(Card)`
   }
   @media (max-width: 350px) {
     width: 200px;
-   margin-left: 30px;
   }
 `;
 
 
-const WeatherCard = ({ searchedForecast, city} ) => {
+const WeatherCard = (props) => {
+  const { searchedForecast, city } = props
   const iconUrlForWeatherCard = useMemo(() => iconUrl(searchedForecast?.[0]?.Day.Icon), [searchedForecast?.[0]?.Day.Icon]);
-  const tenperatureForWeatherCard = searchedForecast[0]?.Temperature.Maximum.Value;
-  const unitForTenperatureInWeatherCard = searchedForecast[0]?.Temperature.Maximum.Unit;
+  const temperatureValue = searchedForecast[0]?.Temperature.Maximum.Value;
+  const temperatureUnit = searchedForecast[0]?.Temperature.Maximum.Unit;
+
   return (
     <WeatherCardContainer>
-      <StyledWeatherCard >
+      <StyledWeatherCard>
         <Space size={32}>
           <Image
             className="weather-img"
@@ -59,11 +56,12 @@ const WeatherCard = ({ searchedForecast, city} ) => {
             preview={false}
           />
           <div>
-            <p ><span>City:</span> {city}</p>
-            <p ><span>Temperature: </span> {tenperatureForWeatherCard}{unitForTenperatureInWeatherCard }</p>
+            <p><span>City:</span> {city}</p>
+            <p><span>Temperature: </span> {temperatureValue}{temperatureUnit}</p>
           </div>
         </Space>
-      </StyledWeatherCard >
+        { props.children }
+      </StyledWeatherCard>
     </WeatherCardContainer>
   );
 }

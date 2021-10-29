@@ -1,31 +1,46 @@
-import React, { useState } from 'react';
-import { Input } from 'antd';
-import { getSearchedWeather } from '../../store/actions/weatherActions';
-import { useDispatch } from "react-redux";
+import React, {useMemo, useState} from 'react';
+import {AutoComplete, Input} from 'antd';
+import {useDispatch, useSelector} from "react-redux";
 import './search.css';
+import {searchCities, setSelectedCity} from "../../store/actions/citiesActions";
 
-const Search = () => {
+const Search = (props) => {
+  const [searchValue, setSearchValue] = useState('')
+  const { citiesList } = useSelector((store) => store.cities )
+  const options = useMemo(() => {
+    return citiesList.map((city) => ({ label: city.LocalizedName, value: city.Key }))
+  }, [citiesList])
 
-  const [text, setText] = useState('')
   const dispatch = useDispatch();
-  const { Search } = Input;
+
+  const onSelect = (value) => {
+    const selectedOption = options.find(option => option.value === value)
+    setSearchValue(selectedOption.label)
+    dispatch(setSelectedCity({ name: selectedOption.label, key: selectedOption.value }))
+    props.onSearchSelect(selectedOption)
+  }
+
+  const onChange = (value) => {
+    setSearchValue(value)
+  }
 
   const onSearch = (value) => {
-    dispatch(getSearchedWeather(value))
-    setText('')
+    if (value.trim().length > 0) {
+      dispatch(searchCities(value))
+    }
   }
 
   return(
-    <div>
-      <Search
+    <div className="search-wrap">
+      <AutoComplete
         className="weather-search"
-        placeholder="input search city weather"
-        allowClear
-        enterButton="Search"
-        size="large"
-        onSearch={onSearch}
-        style={{ width: 800, margin: '60px 0px 0px 200px'}}
-      />
+        value={searchValue}
+        onSelect={onSelect}
+        onChange={onChange}
+        options={options}
+      >
+        <Input.Search size="large" placeholder="Input city" enterButton onSearch={onSearch} allowClear={true}/>
+      </AutoComplete>
     </div>
   )
 }
