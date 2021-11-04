@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Space, Typography, Button } from 'antd';
 import { Layout } from 'antd';
+import './appHeader.css';
 const { Header } = Layout;
 
-const NAV_LINKS = {
-  home: 'home',
-  favourites: 'favourites'
-};
 
 const StyledHeader = styled(Header)`
   display: flex;
   justify-content: space-between;
   background-color: transparent;
+`;
+const StyledNavLink = styled(NavLink )`
+
+
 `;
 
 const StyledTitle = styled(Typography)`
@@ -32,39 +33,21 @@ const StyledTitle = styled(Typography)`
     font-weight: 700;
     font-size: 19px;
     line-height: 14px;
-    margin-top: 30px;
   }
 
 `;
 
 const AppHeader = () => {
-  const history = useHistory();
-
-  const [activeLink, setActiveLink] = useState(NAV_LINKS.home);
-
-  const redirectToHomePage = () => {
-    setActiveLink(NAV_LINKS.home);
-    history.push('/home');
-  };
-
-  const redirectToFavouritesPage = () => {
-    setActiveLink(NAV_LINKS.favourites);
-    history.push('/favorite');
-  };
 
   return (
     <StyledHeader>
       <StyledTitle style={{ color: '#5467b8' }}>Herolo weather task</StyledTitle>
-      <Space size={10}>
-        <Button size="large" onClick={redirectToHomePage} type={activeLink === NAV_LINKS.home ? "primary": "default"}>
-          Home
-        </Button>
-        <Button size="large" onClick={redirectToFavouritesPage} type={activeLink === NAV_LINKS.favourites ? "primary": "default"}>
-          Favorites
-        </Button>
+      <Space size={20}>
+        <StyledNavLink  to ={`/home`} activeClassName="active">Home</StyledNavLink>
+         <StyledNavLink to={`/favorite`} activeClassName="active">Favorites</StyledNavLink>
       </Space>
     </StyledHeader>
   );
 };
 
-export default AppHeader
+export default AppHeader;

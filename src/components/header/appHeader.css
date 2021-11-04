@@ -1,0 +1,14 @@
+a.active {
+  color:  #dea310 !important;
+}
+
+a {
+  color: #5467b8 !important;
+  background: transparent !important;
+  /* box-shadow: -6px -6px 20px rgba(255, 255, 255,1),
+              -6px -6px 20px rgba(0, 0, 0, 0.1); */
+	padding: 10px 30px; /*отступы внутри*/
+	text-decoration: none;
+  border: 2px dashed #5467b8;
+  font-weight: 700;
+}
